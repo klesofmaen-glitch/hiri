@@ -1,0 +1,112 @@
+configuration {
+    modi:                       "drun,run,window";
+    show-icons:                 true;
+    display-drun:               " ";
+    display-run:                " ";
+    display-window:             " ";
+    drun-display-format:        "{name}";
+    font:                       "JetBrainsMono Nerd Font Bold 12";
+}
+
+* {
+    /* Твоя палитра #242121 */
+    bg:          #242121;
+    bg-alt:      #2d2a2a;
+    fg:          #d1d1d1;
+    accent:      #e26d5c; /* Красный акцент под Аску */
+    
+    /* Сбрасываем всё в прозрачность, чтобы ничего не вылезло */
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    width:            1000px;
+    height:           600px;
+    border:           3px;
+    border-color:     @accent;
+    border-radius:    20px;
+    background-color: @bg; /* Основной темный фон окна */
+}
+
+mainbox {
+    children:         [ inputbar, listview, mode-switcher ];
+    spacing:          0px;
+}
+
+/* Строка поиска */
+inputbar {
+    padding:          40px 40px 20px 40px;
+    background-color: @bg;
+    children:         [ entry ];
+}
+
+entry {
+    background-color: @bg-alt;
+    padding:          15px;
+    border-radius:    10px;
+    placeholder:      "Поиск...";
+    placeholder-color: #555555;
+}
+
+/* Список приложений */
+listview {
+    columns:          3; /* Навороченный вид в 3 колонки */
+    lines:            6;
+    spacing:          15px;
+    padding:          20px 40px;
+    cycle:            false;
+    dynamic:          true;
+    layout:           vertical;
+}
+
+/* --- РЕШАЕМ ПРОБЛЕМУ БЕЛЫХ ПОЛОС --- */
+element {
+    padding:          15px;
+    spacing:          10px;
+    border-radius:    12px;
+    /* ЯВНО ставим прозрачность для всех состояний, кроме выбранного */
+    background-color: transparent; 
+}
+
+/* Убираем фон даже если Rofi пытается его навязать */
+element normal.normal, element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @accent; /* При наведении/выборе станет красным */
+    text-color:       @bg;
+}
+
+element-icon {
+    size:             48px;
+    cursor:           pointer;
+}
+
+element-text {
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+    cursor:           pointer;
+    text-color:       inherit;
+}
+
+/* Нижние вкладки для "живости" */
+mode-switcher {
+    padding:          10px 40px 20px 40px;
+    spacing:          20px;
+}
+
+button {
+    padding:          10px;
+    border-radius:    10px;
+    background-color: @bg-alt;
+    text-color:       @fg;
+    cursor:           pointer;
+}
+
+button selected {
+    background-color: @accent;
+    text-color:       @bg;
+}

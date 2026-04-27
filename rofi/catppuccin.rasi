@@ -1,0 +1,95 @@
+* {
+    /* Основная палитра */
+    bg-col:      #242121;         /* Твой глубокий графитовый фон */
+    bg-col-light:#2d2a2a;         /* Чуть светлее для выделения элементов */
+    border-col:  #3d3838;         /* Цвет рамок, чтобы не резали глаз */
+    selected-col:#4a4444;         /* Цвет активного пункта (как в Neovim) */
+    
+    /* Акценты */
+    highlight:   #ebbcba;         /* Мягкий розово-бежевый для текста */
+    urgent:      #e26d5c;         /* Приглушенный красный для важных оповещений */
+    
+    /* Текст */
+    fg-col:      #d6d6d6;         /* Основной текст */
+    fg-col2:     #f2e9e9;         /* Яркий текст для выделенных пунктов */
+    grey:        #8c8585;         /* Для второстепенной информации */
+
+    width: 600;                   /* Сделал чуть уже для лаконичности */
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+window {
+    height: 360px;
+    border: 2px;
+    border-color: @border-col;
+    background-color: @bg-col;
+    border-radius: 12px;          /* Скругления как на твоем Waybar */
+}
+
+mainbox {
+    background-color: @bg-col;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @selected-col;
+    padding: 6px;
+    text-color: @fg-col2;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 0px 0px 10px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 10px 20px 20px 20px;
+    columns: 1;
+    lines: 8;
+    background-color: @bg-col;
+}
+
+element {
+    padding: 5px;
+    background-color: @bg-col;
+    text-color: @fg-col;
+    border-radius: 6px;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected {
+    background-color:  @selected-col;
+    text-color: @fg-col2;
+}
+
+mode-switcher {
+    spacing: 0;
+  }
+
+button {
+    padding: 10px;
+    background-color: @bg-col-light;
+    text-color: @grey;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @bg-col;
+  text-color: @highlight;
+}
